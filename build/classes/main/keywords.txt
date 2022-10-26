@@ -1,0 +1,81 @@
+int DT
+float DT
+char DT
+string DT
+void VOID
+
+local AM
+global AM
+protected AM
+
+if IF
+else ELSE
+
+while WHILE
+break LK
+skip LK
+
++ PM
+
+- PM
+
+* MDM
+
+/ MDM
+
+% MDM
+
+= =
+
+< ROP
+> ROP
+<= ROP
+>= ROP
+!= ROP
+== ROP
+
+null NULL
+
+childOf CHILD_OF
+
+abstract ABSTRACT
+
+static STATIC
+
+create CREATE
+
+class CLASS
+
+self SELF
+
+super SUPER
+
+const CONST
+
+func FUNC
+
+return RETURN
+
+; ; 
+: :
+. .
+
+, ,
+
+( (
+
+) )
+
+[ [
+
+] ]
+
+{ {
+
+} }
+
+execute EXECUTE
+
+<#> Single_Line_Comment
+
+<$> Multi_Line_comment
