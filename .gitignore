@@ -1,5 +1,5 @@
-build
-nbproject
-test 
-build 
+build/
+nbproject/
+test/ 
+build/
 manifest.mf
