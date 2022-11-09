@@ -21,6 +21,12 @@ public class Syntax_Analyzer {
     private Map<String , ArrayList<String[]> > cfgs = new LinkedHashMap<>();
 
     private Set<Token> checked = new HashSet<>();
+    private int erroredTokenIndex = -1;
+
+    
+//    Semantic Variables
+    private int scope = 0;
+    private List<Integer> scopeStack = new ArrayList<>();    
     
 //    List<String[]> String 
     public Syntax_Analyzer(String path ,ArrayList<Token> tokens) {
@@ -69,7 +75,8 @@ public class Syntax_Analyzer {
         
         if (this.helper("<START>") && index == tokens.size() ) {
             System.out.println("INDEX == "+ index);
-//            System.out.println("PARSED = "+checked);
+            System.out.println("PARSED = "+checked);
+            System.out.println("I'm checking hashCode = "+checked.contains(0));
             return true;
         }
         else {
@@ -77,7 +84,11 @@ public class Syntax_Analyzer {
             System.out.println("PARSED = "+checked);
 //            System.out.println("error wala word = "+invalidToken.value + " ,line no ="+ invalidToken.line);
             System.out.println("INDEX == "+ index);
-            Token errored = (Token)checked.toArray()[checked.size()-1];
+            
+//            Token errored = (Token)checked.toArray()[checked.size()-1];
+            Token errored = tokens.get(erroredTokenIndex);
+//            System.out.println("Unexpected Token:\'" + errored.value+"\' "+"at line "+errored.line );
+
             System.out.println("Unexpected Token:\'" + errored.value+"\' "+"at line "+errored.line );
             return false;
         }
@@ -89,7 +100,7 @@ public class Syntax_Analyzer {
 //        System.out.println("------------");
         
         for(String[] pr : productionRules){
-//             System.out.println("% "+curNT + " -> "+0-=] Arrays.toString(pr));
+//             System.out.println("% "+curNT + " -> "+ Arrays.toString(pr));
             int prev = index;
             int j = 0;
             for( ; j < pr.length ;j++){
@@ -118,15 +129,16 @@ public class Syntax_Analyzer {
                 else {
 //                    System.out.println("HERE IN TERMINAL");
 //                    System.out.println("tokens.get(index).type ="+ tokens.get(index).type +"'");
-                    
-                    if(tokens.get(index).type.equals(element)){
+                    String cp = tokens.get(index).type;
+                    if(cp.equals(element)){
 //                        if(invalidToken == tokens.get(index)) invalidToken = null;                        
 //                        System.out.println("Matched Terminal ="+element);
 //                        System.out.println("Matched Terminal value ="+tokens.get(index).value);
 
                         checked.add(tokens.get(index));
                         index++;                     
-                        
+                        if(cp.equals("(")) createScope();
+                        else if(cp.equals("}")) destroyScope();
 //                        System.out.println("NEXT Terminal value ="+tokens.get(index).value);               
 //                        System.out.println("%% checked = " + checked);
                     }
@@ -135,6 +147,7 @@ public class Syntax_Analyzer {
                         checked.add(tokens.get(index));
                         break;
                     }
+                    erroredTokenIndex = Math.max(erroredTokenIndex , index);
                 }
             }
             if( j == pr.length ){
@@ -147,6 +160,18 @@ public class Syntax_Analyzer {
         }
         return false;
     }
+    private void createScope(){
+        scope++;
+        scopeStack.add(scope);
+        System.out.println("\n(+) Creating Scope ");
+        System.out.println("scope no : "+scope + " , scopeStack = "+scopeStack);
+    }
+    private void destroyScope(){
+        System.out.println("\n(-) Destroying Scope");
+        scopeStack.remove(scopeStack.size() - 1);
+        System.out.println("scopeStack = "+ scopeStack);
+    }
+    
     private void printCfgs(){
         for(String key : cfgs.keySet()){
             System.out.print(key +" -> " );
