@@ -36,7 +36,7 @@ skip LK
 
 null NULL
 
-childOf CHILD_OF
+childOf CHILDOF
 
 abstract ABSTRACT
 
@@ -49,6 +49,8 @@ class CLASS
 self SELF
 
 super SUPER
+
+constructor CONSTRUCTOR
 
 const CONST
 

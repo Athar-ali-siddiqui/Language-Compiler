@@ -1,47 +1,68 @@
-
-local class parent{
+$
+class parent{
+    local int value = 2; 
     func local parent(){
             super();
     }
-    func local parent(){
+    func local parent(int a){
             super(A1,A2);
     }
     func local const id():string{
     }	 
-    func global static const id(): float{
+    func global static const id(float a): float{
 
     } 
     func local walk():void{
 
     }
-func local call(int a, A[] arr ): A{
+}
+$
+abstract class B {}
+int arr3 [][]= [[2,3],[4,5]];
+class A childOf B{
+    local static string a = "str";
+    local static const int b = 4.5;   
     
+    
+    func local  abc(int a):void{
+        int var = b+3;
+        int a = arr3[arr3[2][3]][3];
+    }
+}
+$
+abstract class B {}
+const    class C {}
+class D childOf B {}
+abstract class E childOf B,C,A{}
+const    class F childOf B{}
+
+
+A a ;
+int b;
+
+
+
+func abc(int a,int b,A b,string sb):A{}
+
+func abc(int arg1,char arg2,string arg3): int{
+	return 1;
+} 
+float abc = id(1.1,1,"as");
+
+func abc(int arg1): float{
+	return 1;
+} 
+func abc(F arg1): float{
+	return 1;
+} 
+
+func call(int a, A arr ): A{   
     while(c < 5+1){
-        New cla = create New(12,"athar");
-    }
-    if(4 >= 43+54 * 5 + self.m.fn(fn().arr)){
-        print("dsadas");
-    }else{
-        int a[] = int[3];
-        while(a == b){
-            break;
-        }
-    }
- 
-    return 3;
+        A cla = create A(12,"athar");
+    } 
 }
 
-}
 
-func id(int arg1,char arg2,string arg3): int{
-	return 1;
-} 
-float var = id(1.1,1,"as");
-
-func id2(int arg1): float{
-	return 1;
-} 
-int a = 1;
 func call(): void{
     
     while(c < 5+1){
@@ -56,16 +77,34 @@ func call(): void{
         }
     }
  
-    return ;
+    return 2 ;
+}
+func call(int par): void{
+    int a = 2;
+    int b[] = [2];
+    int c[][] = [[2]];
+    if(a<b){
+        int a = 3;
+        
+    }
+    while(a==b){float a = 3;}
 }
 
+
+int a = 4;
+$
+int d = 2;
+int arr[][] = [[2,3],[4,5]];
+func fun(int a):int{
+
+}
 func execute (): void {
-    
+    $
     int b = 54 + 2.3;
     string abc = create Person();
-    int b = 54 + 2.3;
+    #int f = 54 + 2.3;
 
-    string c[][] = {{3,4},{4,5,6,9,9,9}};
+    #string c[][] = {{3,4},{4,5,6,9,9,9}};
     int cd = c[2].acv(.09).v;
     c[2] = 4;
     while(abc(2) > 2){
@@ -78,5 +117,26 @@ func execute (): void {
         a[234][6] = a;
         
     }
+
+    string abc = create Person();
+    int b = 54 + 2.3;
+
+    string c[][] = [[3,4],[4,5,6,9,9,9]];
+    int cd = c[2].acv(.09).v;
+    c[2][34+54] = 3;
+    $
+
+    char c = 'a';
+    string s = "abc" + "23";
+    A obj;
+    float f2 = d/4/5/45/454;
+    int temp = 2.0+.5*6-0;
+    
+    int arr2[] = [4,5];
+    B a2[][] = [[obj],[obj]];
+    
+    float f = 3+f2-(4+2*76.8+2)+arr2[arr[4][arr2[d]]];
+    int a3 = arr[d*5][7]*2/d;
+    int a8 = fun(2);
     
 }

@@ -83,6 +83,7 @@ public class Lexical_Analyzer {
                             line = in.nextLine();
                             line += " ";   
                             j = 0;
+                            line_no++;
                         }
                         for(; j < line.length() ;j++){
                             if(line.charAt(j) == '$') {
@@ -94,7 +95,7 @@ public class Lexical_Analyzer {
                         }
                         first_itr_check = true;
                     }while(check && in.hasNextLine());
-                    
+
                     if(check) list.add(temp.toString());
                     i = j;
                 }

@@ -42,5 +42,10 @@ public class FunctionTableElement {
     public void setScope(int scope) {
         this.scope = scope;
     }
+
+    @Override
+    public String toString() {
+        return "FunctionTableElement{" + "name=" + name + ", type=" + type + ", scope=" + scope + '}';
+    }
     
 }
